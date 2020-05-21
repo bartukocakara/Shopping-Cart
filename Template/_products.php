@@ -1,9 +1,14 @@
         <!--start product-->
+        <?php 
+            $item_id = $_GET['item_id'] ?? 1;
+            foreach($product->getData() as $item):
+                if($item['item_id'] == $item_id):
+        ?>
         <section id="product" class="py-3">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <img src="./assets/products/apple-5.png" alt="apple-5" class="img-fluid">
+                        <img src="<?php echo $item['item_image'] ?? 'assets/products/1.png'; ?>" alt="apple-5" class="img-fluid">
                         <div class="form-row pt-4 font-size-16 font-baloo">
                             <div class="col">
                                 <button type="submit" class="btn btn-danger form-control">Proceed to Buy</button>
@@ -14,8 +19,8 @@
                         </div>
                     </div>
                     <div class="col-sm-6">
-                        <h5 class="font-baloo font-size-20">Samsung Galaxy 10</h5>
-                        <small>by Samsung</small>
+                        <h5 class="font-baloo font-size-20"><?php echo $item['item_name'] ?? 'Name'; ?></h5>
+                        <small>by <?php echo $item['item_brand'] ?? 'Brand'; ?></small>
                         <div class="rating text-warning font-size-12">
                             <span><i class="fas fa-star"></i></span>
                             <span><i class="fas fa-star"></i></span>
@@ -33,11 +38,11 @@
                             </tr>
                             <tr class="font-rale font-size-14">
                                 <td>Deal Price:</td>
-                                <td class="font-size-20 text-danger">$<span>152.00</span><small class="text-dark">&nbsp;&nbsp;inclusive all small taxes</small></td>
+                                <td class="font-size-20 text-danger">$<span><?php echo $item['item_price'] ?? s0; ?></span><small class="text-dark">&nbsp;&nbsp;inclusive all small taxes</small></td>
                             </tr>
                             <tr class="font-rale font-size-14">
                                 <td>You Save:</td>
-                                <td>$<span class="font-size-16 text-danger">10.00</span></td>
+                                <td>$<span class="font-size-16 text-danger">10.00..</span></td>
                             </tr>
                         </table>
                         <!--end product price-->
@@ -69,7 +74,7 @@
                         <!--start order details-->
                         <div id="order-details" class="font-rale d-flex flex-column text-dark">
                             <small>Delivery by : Mar 29 - Apr 1</small>
-                            <small>Sold by <a href="">Daily Electronics</a>(4.5 out of 5 | 18,198 ratings)</small>
+                            <small>Sold by <a href="">Daily Electronics</a>(4.5 out of 5 | 18,250 ratings)</small>
                             <small><i class="fas fa-map-marker-alt color-primary"></i>&nbsp;&nbsp;Deliver to Costumer 424201</small>
                         </div>
                         <!--end order details-->
@@ -125,3 +130,7 @@
             </div>
         </section>
         <!--end product-->
+        <?php
+            endif;
+            endforeach;
+        ?>

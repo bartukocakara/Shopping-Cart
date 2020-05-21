@@ -15,6 +15,7 @@
     
     <!-- Custom Css File -->
     <link rel="stylesheet" href="./style.css">
+    <?php require ('functions.php'); ?>
     <title>Mobile Shopee</title>
 </head>
 <body>
