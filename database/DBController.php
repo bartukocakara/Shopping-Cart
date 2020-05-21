@@ -18,4 +18,18 @@ class DBController
             echo "Fail" .$this->con->connect_error;
         }
     }
+
+    public function __destruct()
+    {
+        $this->closeConnection();
+    }
+
+    //for mysqli closing connection
+    protected function closeConnection()
+    {
+        if($this->con != null){
+            $this->con->close();
+            $this->con = null;
+        }
+    }
 }
