@@ -74,7 +74,7 @@
                         <!--start order details-->
                         <div id="order-details" class="font-rale d-flex flex-column text-dark">
                             <small>Delivery by : Mar 29 - Apr 1</small>
-                            <small>Sold by <a href="">Daily Electronics</a>(4.5 out of 5 | 18,198 ratings)</small>
+                            <small>Sold by <a href="">Daily Electronics</a>(4.5 out of 5 | 18,250 ratings)</small>
                             <small><i class="fas fa-map-marker-alt color-primary"></i>&nbsp;&nbsp;Deliver to Costumer 424201</small>
                         </div>
                         <!--end order details-->
