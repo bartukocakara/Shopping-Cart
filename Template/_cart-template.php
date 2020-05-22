@@ -5,14 +5,19 @@
                 <!--start shopping cart items-->
                 <div class="row">
                     <div class="col-sm-9">
+                      <?php
+                      foreach ($product->getData('cart') as $item) :
+                          $cart = $product->getProduct($item['item_id']);
+                          array_map(function ($item){
+                      ?>
                         <!--start cart item-->
                         <div class="row border-top py-3 mt-3">
                             <div class="col-sm-2">
-                                <img src="./assets//products/apple-5.png" style="height:120px" alt="apple-5" class="img-fluid">
+                                <img src="<?php echo $item['item_image'] ?? './assets/products/1.png'; ?>" style="height:120px" alt="product" class="img-fluid">
                             </div>
                             <div class="col-sm-8">
-                                <h5 class="font-baloo font-size-20">Apple 5</h5>
-                                <small>by Apple</small>
+                                <h5 class="font-baloo font-size-20"><?php echo $item['item_name'] ?? 'unkown'; ?></h5>
+                                <small>by <?php echo $item['item_brand'] ?? 'Brand'; ?></small>
                                 <!--start product rating-->
                                 <div class="d-flex">
                                     <div class="rating text-warning font-size-12">
@@ -39,47 +44,13 @@
                             </div>
                             <div class="col-sm-2 text-right">
                               <div class="font-size-20 text-danger font-baloo">
-                                $ <span class="product_price">152</span>
+                                $ <span class="product_price"><?php echo $item['item_price'] ?? '1'; ?></span>
                               </div>
                             </div>
                         </div>
-                        <div class="row border-top py-3 mt-3">
-                          <div class="col-sm-2">
-                              <img src="./assets//products/galaxy-s7b.png" style="height:120px" alt="galaxy-s7b" class="img-fluid">
-                          </div>
-                          <div class="col-sm-8">
-                              <h5 class="font-baloo font-size-20">Galaxy s7b</h5>
-                              <small>by Samsung</small>
-                              <!--start product rating-->
-                              <div class="d-flex">
-                                  <div class="rating text-warning font-size-12">
-                                      <span><i class="fas fa-star"></i></span>
-                                      <span><i class="fas fa-star"></i></span>
-                                      <span><i class="fas fa-star"></i></span>
-                                      <span><i class="far fa-star"></i></span>
-                                      <span><i class="far fa-star"></i></span>
-                                  </div>
-                                  <a href="" class="px-2 font-rale font-size-14">12,335 ratings</a>
-                              </div>
-                              <!--end product rating-->
-                              <!--start product qty-->
-                                <div class="qty d-flex pt-2">
-                                  <div class="d-flex font-rale w-25">
-                                    <button class="qty-up border bg-light" data-id="pro1"><i class="fas fa-angle-up"></i></button>
-                                    <input type="text" data-id="pro1" class="qty_input border px-2 w-100 bg-light" disabled value="1" placeholder="1">
-                                    <button class="qty-down border bg-light" data-id="pro1"><i class="fas fa-angle-down"></i></button>
-                                  </div>
-                                  <button class="btn font-baloo text-danger px-3 border-right">Delete</button>
-                                  <button class="btn font-baloo text-danger">Save for Later</button>
-                                </div>
-                              <!--end product qty-->
-                          </div>
-                          <div class="col-sm-2 text-right">
-                            <div class="font-size-20 text-danger font-baloo">
-                              $ <span class="product_price">233</span>
-                            </div>
-                          </div>
-                      </div>
+                        <?php
+                        }, $cart);
+                        endforeach;?>
                         <!--end cart item-->
                     </div>
                     <!--start subtotal section-->
