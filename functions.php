@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 require ('database/DBController.php');
 
 require ('database/Product.php');
