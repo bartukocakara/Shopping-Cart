@@ -70,5 +70,53 @@ class Cart
            return sprintf('%.2f' , $sum);
        }
     }
+
+    //get item_id of shopping cart list
+    public function getCartId($cartArray = null, $key = "item_id")
+    {
+        if($cartArray != null)
+        {
+            $cart_id = array_map(function($value) use($key){
+                return $value[$key];
+            }, $cartArray);
+            return $cart_id;
+        }
+    }
+
+    //save for later
+    public function saveForLater($item_id = null, $saveTable = "wishlist", $fromTable = "cart")
+    {
+        if($item_id != null)
+        {
+            $query = "INSERT INTO {$saveTable} SELECT * FROM {$fromTable} WHERE item_id = $item_id;";
+            $query .= "DELETE FROM {$fromTable} WHERE item_id={$item_id};";
+
+            //execute multiple query
+            $result = $this->db->con->multi_query($query);
+            if($result)
+            {
+                header("Location:".$_SERVER['PHP_SELF']);
+            }
+            return $result;
+        }
+    }
+
+    //wishlist
+    public function addToWishlist($item_id = null, $saveTable = "wishlist", $fromTable = "cart")
+    {
+        if($item_id != null)
+        {
+            $query = "INSERT INTO {$saveTable} SELECT * FROM {$fromTable} WHERE item_id = $item_id;";
+            $query .= "DELETE FROM {$fromTable} WHERE item_id={$item_id};";
+
+            //execute multiple query
+            $result = $this->db->con->multi_query($query);
+            if($result)
+            {
+                header("Location:".$_SERVER['PHP_SELF']);
+            }
+            return $result;
+        }
+    }
 }
 ?>
